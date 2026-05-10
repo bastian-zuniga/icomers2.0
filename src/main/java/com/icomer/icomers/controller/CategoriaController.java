@@ -1,9 +1,5 @@
 package com.icomer.icomers.controller;
 
-<<<<<<< HEAD
-public class CategoriaController {
-
-=======
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,5 +67,4 @@ public class CategoriaController {
         }
     }
 
->>>>>>> 69e597199b117d37f07e8c7bb9c39ff323663b1f
 }

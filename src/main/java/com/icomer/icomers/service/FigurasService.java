@@ -81,12 +81,4 @@ public class FigurasService {
         return figurasRepository.findByCategoria_IdCategoria(idCategoria).stream().map(this::convertirADTO).toList();
     }
 
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> 69e597199b117d37f07e8c7bb9c39ff323663b1f
 }

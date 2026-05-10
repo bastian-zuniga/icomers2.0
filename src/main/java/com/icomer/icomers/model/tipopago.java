@@ -21,10 +21,20 @@ public class tipopago {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idTipoPago;
 
     @NotBlank(message = "El nombre del tipo de pago es obligatorio")
     @Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres")
     @Column(nullable = false, length = 50)
-    private String nombre;
+    private String nombreTipoPago;
+
+    public Object getActivo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getActivo'");
+    }
+
+    public void setActivo(Object activo) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setActivo'");
+    }
 }

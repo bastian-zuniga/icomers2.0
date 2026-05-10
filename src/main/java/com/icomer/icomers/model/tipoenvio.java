@@ -22,19 +22,17 @@ public class tipoenvio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idEnvio;
 
     @NotBlank(message = "El nombre no puede estar vacio")
     @Column(nullable = false, length = 50)
-    private String nombre;
+    private String nombreEnvio;
 
     @NotNull(message = "El costo no puede estar vacio")
     @Column(nullable = false)
-    private Double costo;
+    private Double costoEnvio;
 
     @Column(nullable = false)
-    private Boolean activo; 
+    private Boolean activoEnvio; 
 
-    @Version
-    private Integer version;
 }

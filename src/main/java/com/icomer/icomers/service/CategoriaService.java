@@ -9,7 +9,9 @@ import com.icomer.icomers.model.Categoria;
 import com.icomer.icomers.repository.CategoriaRepository;
 
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @Transactional
 public class CategoriaService {
@@ -19,20 +21,25 @@ public class CategoriaService {
 
     //metodo para listar todas las categorias
     public List<Categoria> obtenerTodos() {
+        log.info("SERVICE: Listando todas las categorias");
         return categoriaRepository.findAll();
     }
     
     //metodo para guardar una categoria
     public Categoria guardarCategoria(Categoria categoria) {
+        log.info("SERVICE: Guardando nueva categoria: {}", categoria.getNombreCategoria());
         return categoriaRepository.save(categoria);
     }
 
     //metodo para actualizar una categoria id
     public Categoria actualizarCategoria(Integer id, Categoria categoria) {
+        log.info("SERVICE: Actualizando categoria ID: {}", id);
         Categoria categoriaExistente = categoriaRepository.findById(id).orElseThrow(() -> new RuntimeException("Error, La categoria con ID " + id + " no existe."));
         if(categoria.getNombreCategoria() != null){
+            log.info("SERVICE: Actualizando nombre de categoria ID: {}", id);
             categoriaExistente.setNombreCategoria(categoria.getNombreCategoria());
         }
+        log.info("SERVICE: Categoria actualizada ID: {}", id);
         return categoriaRepository.save(categoriaExistente);
     }
 
@@ -41,6 +48,7 @@ public class CategoriaService {
         try {
             Categoria categoria = categoriaRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("La categoria con id " + id + " no existe."));
+            log.info("SERVICE: Eliminando categoria ID: {}", id);
             categoriaRepository.delete(categoria);
             return "La categoria " + categoria.getNombreCategoria() + " ha sido eliminada exitosamente.";
         } catch (RuntimeException e) {

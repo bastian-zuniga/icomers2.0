@@ -33,7 +33,7 @@ public class tipopagoservice {
     }
 
     public tipopago guardartipopago(tipopago nuevo){
-        log.info("SERVICE: Guardando nuevo pago: {}", nuevo.getNombre());
+        log.info("SERVICE: Guardando nuevo pago: {}", nuevo.getNombreTipoPago());
         return tipopagorepository.save(nuevo);
     }
 
@@ -41,7 +41,7 @@ public class tipopagoservice {
     public tipopago actualizartipopago(Integer id, tipopago datosNuevos){
         log.info("SERVICE: Actualizando tipo de pago ID: {}", id);
         tipopago existente = buscarporid(id);
-        existente.setNombre(datosNuevos.getNombre());
+        existente.setNombreTipoPago(datosNuevos.getNombreTipoPago());
         existente.setActivo(datosNuevos.getActivo()); 
         return tipopagorepository.save(existente);
     }

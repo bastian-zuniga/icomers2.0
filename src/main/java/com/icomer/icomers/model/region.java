@@ -21,15 +21,13 @@ public class region {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idRegion;
 
     @NotBlank(message = "El nombre de la region no puede estar vacio")
     @Column(nullable = false, length = 50)
-    private String nombre;
+    private String nombreRegion;
 
     @Column(nullable = false)
     private Boolean activo;
 
-    @Version
-    private Integer version;
 }

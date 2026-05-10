@@ -33,16 +33,16 @@ public class tipoenvioservice {
     }
 
     public tipoenvio guardartipoenvio(tipoenvio nuevo){
-        log.info("SERVICE: Guardando nuevo envio: {}", nuevo.getNombre());
+        log.info("SERVICE: Guardando nuevo envio: {}", nuevo.getNombreEnvio());
         return tipoenviorepository.save(nuevo);
     }
 
     public tipoenvio actualizartipoenvio(Integer id, tipoenvio datosNuevos){
         log.info("SERVICE: Actualizando envio ID: {}", id);
         tipoenvio existente = buscarporid(id);
-        existente.setNombre(datosNuevos.getNombre());
-        existente.setCosto(datosNuevos.getCosto());
-        existente.setActivo(datosNuevos.getActivo());
+        existente.setNombreEnvio(datosNuevos.getNombreEnvio());
+        existente.setCostoEnvio(datosNuevos.getCostoEnvio());
+        existente.setActivoEnvio(datosNuevos.getActivoEnvio());
         return tipoenviorepository.save(existente);
     }
 

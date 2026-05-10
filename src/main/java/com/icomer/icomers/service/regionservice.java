@@ -33,14 +33,14 @@ public class regionservice {
     }
 
     public region guardarregion(region nueva){
-        log.info("SERVICE: Guardando nueva region: {}", nueva.getNombre());
+        log.info("SERVICE: Guardando nueva region: {}", nueva.getNombreRegion());
         return regionrepository.save(nueva);
     }
 
     public region actualizarregion(Integer id, region datosNuevos){
         log.info("SERVICE: Actualizando region ID: {}", id);
         region existente = buscarporid(id);
-        existente.setNombre(datosNuevos.getNombre());
+        existente.setNombreRegion(datosNuevos.getNombreRegion());
         existente.setActivo(datosNuevos.getActivo());
         return regionrepository.save(existente);
     }

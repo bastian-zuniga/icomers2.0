@@ -1,13 +1,10 @@
 package com.icomer.icomers.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.icomer.icomers.model.tipoenvio;
 import com.icomer.icomers.repository.tipoenviorepository;
-
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +25,7 @@ public class tipoenvioservice {
         log.info("SERVICE: Buscando tipo de envio ID: {}", id);
         return tipoenviorepository.findById(id).orElseThrow(() -> {
             log.error("SERVICE: No se encontro el ID de envio: {}", id);
-            return new RuntimeException("no encontrado");
+            return new RuntimeException("Error, El envio con ID " + id + " no existe.");
         });
     }
 
@@ -37,18 +34,24 @@ public class tipoenvioservice {
         return tipoenviorepository.save(nuevo);
     }
 
-    public tipoenvio actualizartipoenvio(Integer id, tipoenvio datosNuevos){
+    public tipoenvio actualizartipoenvio(Integer id, tipoenvio datos) {
         log.info("SERVICE: Actualizando envio ID: {}", id);
-        tipoenvio existente = buscarporid(id);
-        existente.setNombreEnvio(datosNuevos.getNombreEnvio());
-        existente.setCostoEnvio(datosNuevos.getCostoEnvio());
-        existente.setActivoEnvio(datosNuevos.getActivoEnvio());
-        return tipoenviorepository.save(existente);
+        
+        if(datos.getNombreEnvio() != null){
+            tipoenviorepository.findById(id).orElseThrow(() -> new RuntimeException("No existe")).setNombreEnvio(datos.getNombreEnvio());
+            log.info("SERVICE: Actualizando nombre de envio ID: {}", id);
+        }
+        
+        if(datos.getCostoEnvio() != null){
+            tipoenviorepository.findById(id).orElseThrow(() -> new RuntimeException("No existe")).setCostoEnvio(datos.getCostoEnvio());
+            log.info("SERVICE: Actualizando costo de envio ID: {}", id);
+        }
+        
+        return tipoenviorepository.save(tipoenviorepository.findById(id).get());
     }
 
     public void eliminartipoenvio(Integer id){
         log.info("SERVICE: Eliminando envio ID: {}", id);
-        tipoenvio existente = buscarporid(id);
-        tipoenviorepository.delete(existente);
+        tipoenviorepository.delete(tipoenviorepository.findById(id).orElseThrow(() -> new RuntimeException("ID de envio no encontrado para eliminar")));
     }
 }

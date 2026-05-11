@@ -29,12 +29,12 @@ public class tipopago {
     private String nombreTipoPago;
 
     public Object getActivo() {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'getActivo'");
     }
 
     public void setActivo(Object activo) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'setActivo'");
     }
 }

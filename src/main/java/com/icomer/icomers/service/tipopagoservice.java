@@ -1,13 +1,10 @@
 package com.icomer.icomers.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.icomer.icomers.model.tipopago;
 import com.icomer.icomers.repository.tipopagorepository;
-
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +25,7 @@ public class tipopagoservice {
         log.info("SERVICE: Buscando tipo de pago ID: {}", id);
         return tipopagorepository.findById(id).orElseThrow(() -> {
             log.error("SERVICE: No se encontro el ID: {}", id);
-            return new RuntimeException("no encontrado");
+            return new RuntimeException("Error, El tipo de pago con ID " + id + " no existe.");
         });
     }
 
@@ -37,18 +34,23 @@ public class tipopagoservice {
         return tipopagorepository.save(nuevo);
     }
 
-    
-    public tipopago actualizartipopago(Integer id, tipopago datosNuevos){
-        log.info("SERVICE: Actualizando tipo de pago ID: {}", id);
-        tipopago existente = buscarporid(id);
-        existente.setNombreTipoPago(datosNuevos.getNombreTipoPago());
-        existente.setActivo(datosNuevos.getActivo()); 
-        return tipopagorepository.save(existente);
+    public tipopago actualizartipopago(Integer id, tipopago datos) {
+        log.info("SERVICE: Actualizando tipo pago ID: {}", id);
+        
+        
+        if(datos.getNombreTipoPago() != null){
+            tipopagorepository.findById(id).orElseThrow(() -> new RuntimeException("No existe")).setNombreTipoPago(datos.getNombreTipoPago());
+            log.info("SERVICE: Actualizando nombre de pago ID: {}", id);
+        }
+        
+        
+        
+        return tipopagorepository.save(tipopagorepository.findById(id).get());
     }
 
     public void eliminartipopago(Integer id){
         log.info("SERVICE: Eliminando tipo de pago ID: {}", id);
-        tipopago existente = buscarporid(id);
-        tipopagorepository.delete(existente);
+        // Eliminamos directo usando el findById dentro del delete
+        tipopagorepository.delete(tipopagorepository.findById(id).orElseThrow(() -> new RuntimeException("ID no encontrado para eliminar")));
     }
 }

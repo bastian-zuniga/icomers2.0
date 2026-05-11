@@ -1,6 +1,6 @@
 REST API para gestion de una tienda de figuras de coleccion. Permite administrar productos, categorias, clientes, ventas, metodos de pago y envios.
 
-##Sack
+## Sack
 -Java 21
 -Spring Boot 4.0.6
 -Spring Data JPA** + **MySQL
@@ -9,7 +9,7 @@ REST API para gestion de una tienda de figuras de coleccion. Permite administrar
 -Maven
 
 
-##entidades principales
+## entidades principales
 | Entidad     | Descripción                              |
 |-------------|------------------------------------------|
 | Figuras   | Productos (nombre, precio, stock, categoria) |
@@ -21,7 +21,7 @@ REST API para gestion de una tienda de figuras de coleccion. Permite administrar
 | TipoEnvio | Tipos de envío disponibles               |
 | Region    | Regiones de despacho                     |
 
-##endpoints
+## endpoints
 
 path: /api/v1
 
@@ -38,7 +38,7 @@ path: /api/v1
 
 Cada recurso sporta operacuiones CRUD estandar.
 
-##requisitos
+## requisitos
 -Java 21+
 -MySQL 8+
 -Maven 3.8

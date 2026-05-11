@@ -72,8 +72,8 @@ GET /{id}: Sin Body (—)
 POST /: Body { cliente: {id}, figuras: {idFiguras}, tipoPago: {idTipoPago}, tipoEnvio, total }   
 PUT /{id}: Body igual al POST   
 DELETE /{id}: Sin Body (—)   
-Personajes /api/personajes   
 
+Personajes /api/personajes   
 GET /: Sin Body (—)   
 GET /buscar/{nombre}: Sin Body (—)   
 POST /: Body { nombre, franquicia }   

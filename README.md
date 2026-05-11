@@ -105,7 +105,7 @@ POST /: Body { nombreComuna }
 PUT /{id}: Body { comuna: {idcomuna}, {nombrecomuna}, {activocomuna}, {regionid} }   
 DELETE /{id}: Sin Body (—)
 
-Marcas /api/v1/marcas
+Marcas /api/v1/marcas  
 GET /: Sin Body (—)  
 GET /{id}: Sin Body (—)  
 POST /: Body { nombreMarca }   

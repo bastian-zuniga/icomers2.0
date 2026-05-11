@@ -1,3 +1,9 @@
+## Nombres
+Matias Contreras Gajardo
+Bastian Zuñiga Montecino
+Sebastian Herrera Correa
+
+
 REST API para gestion de una tienda de figuras de coleccion. Permite administrar productos, categorias, clientes, ventas, metodos de pago y envios.
 
 ## Sack

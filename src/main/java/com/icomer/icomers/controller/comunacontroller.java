@@ -52,7 +52,7 @@ public class comunacontroller {
     public ResponseEntity<?> actualizarcomuna(@PathVariable Integer id, @Valid @RequestBody comuna objeto){
         try {
             log.info("CONTROLLER: Actualizando comuna ID: {}", id);
-            return new ResponseEntity<>(comunaservice.actualizarcomuna(id, objeto)(id, objeto)(id, objeto), HttpStatus.OK);
+            return new ResponseEntity<>(comunaservice.actualizarcomuna(id, objeto), HttpStatus.OK);
         } catch (RuntimeException e) {
             log.error("CONTROLLER: Error al actualizar comuna: {}", e.getMessage());
             return new ResponseEntity<>("id no existe", HttpStatus.NOT_FOUND);

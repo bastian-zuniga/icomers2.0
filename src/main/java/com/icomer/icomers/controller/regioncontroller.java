@@ -62,7 +62,7 @@ public class regioncontroller {
     public ResponseEntity<?> actualizarregion(@PathVariable Integer id, @Valid @RequestBody region objeto){
         try {
             log.info("CONTROLLER: Actualizando region ID: {}", id);
-            return new ResponseEntity<>(regionservice.actualizarregion(id, objeto)(id, objeto), HttpStatus.OK);
+            return new ResponseEntity<>(regionservice.actualizarregion(id, objeto), HttpStatus.OK);
         } catch (RuntimeException e) {
             log.error("CONTROLLER: Error al actualizar region: {}", e.getMessage());
             return new ResponseEntity<>("id no existe", HttpStatus.NOT_FOUND);

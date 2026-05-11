@@ -19,19 +19,19 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    //metodo para listar todas las categorias
+    //listar todas las categorias
     public List<Categoria> obtenerTodos() {
         log.info("SERVICE: Listando todas las categorias");
         return categoriaRepository.findAll();
     }
     
-    //metodo para guardar una categoria
+    //guardar una categoria
     public Categoria guardarCategoria(Categoria categoria) {
         log.info("SERVICE: Guardando nueva categoria: {}", categoria.getNombreCategoria());
         return categoriaRepository.save(categoria);
     }
 
-    //metodo para actualizar una categoria id
+    //actualizar una categoria id
     public Categoria actualizarCategoria(Integer id, Categoria categoria) {
         log.info("SERVICE: Actualizando categoria ID: {}", id);
         Categoria categoriaExistente = categoriaRepository.findById(id).orElseThrow(() -> new RuntimeException("Error, La categoria con ID " + id + " no existe."));
@@ -43,7 +43,7 @@ public class CategoriaService {
         return categoriaRepository.save(categoriaExistente);
     }
 
-    //metodo para eliminar una categoria
+    //eliminar una categoria
     public String eliminarPorId(Integer id) {
         try {
             Categoria categoria = categoriaRepository.findById(id)

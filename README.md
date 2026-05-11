@@ -44,6 +44,74 @@ path: /api/v1
 
 Cada recurso sporta operacuiones CRUD estandar.
 
+### Figuras `/api/v1/figuras`
+| Metodo | Ruta | Descripción |
+|--------|------|-------------|
+| GET | `/` | Listar todas |
+| GET | `/{id}` | Buscar por ID |
+| GET | `/categoria/{id}` | Buscar por categoría |
+| POST | `/` | Crear — `{ nombre, precio, stock, descripcion, categoria: {idCategoria} }` |
+| PUT | `/actualizar/{id}` | Actualizar |
+| DELETE | `/{id}` | Eliminar |
+
+### Categorias `/api/v1/categorias`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` | — |
+| POST | `/` | `{ nombreCategoria }` |
+| PUT | `/{id}` | `{ nombreCategoria }` |
+| DELETE | `/{id}` | — |
+
+### Clientes `/api/clientes`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` | — |
+| POST | `/` | `{ nombre, email, telefono, direccion }` |
+| PUT | `/{id}` | `{ nombre, email, telefono, direccion }` |
+| DELETE | `/{id}` | — |
+
+### Ventas `/api/ventas`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` | — |
+| GET | `/{id}` | — |
+| POST | `/` | `{ cliente: {id}, figuras: [{idFigura}], tipoPago: {idTipoPago}, tipoEnvio, total }` |
+| PUT | `/{id}` | igual al POST |
+| DELETE | `/{id}` | — |
+
+### Personajes `/api/personajes`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` | — |
+| GET | `/buscar/{nombre}` | — |
+| POST | `/` | `{ nombre, franquicia }` |
+| PUT | `/{id}` | `{ nombre, franquicia }` |
+| DELETE | `/{id}` | — |
+
+### Tipos de Pago `/api/v1/tipopago`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` · `/{id}` | — |
+| POST | `/` | `{ nombreTipoPago }` |
+| PUT | `/{id}` | `{ nombreTipoPago }` |
+| DELETE | `/{id}` | — |
+
+### Tipos de Envio `/api/v1/tipoenvio`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` · `/{id}` | — |
+| POST | `/` | `{ nombreEnvio, costoEnvio, activoEnvio }` |
+| PUT | `/{id}` | `{ nombreEnvio, costoEnvio, activoEnvio }` |
+| DELETE | `/{id}` | — |
+
+### Regiones `/api/v1/region`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` · `/{id}` | — |
+| POST | `/` | `{ nombreRegion, activo }` |
+| PUT | `/{id}` | `{ nombreRegion, activo }` |
+| DELETE | `/{id}` | — |
+
 ## requisitos
 -Java 21+
 -MySQL 8+
@@ -52,5 +120,6 @@ Cada recurso sporta operacuiones CRUD estandar.
 ## Ejecutar
 
 http://localhost:8080
+
 
 

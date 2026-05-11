@@ -112,6 +112,14 @@ Cada recurso sporta operacuiones CRUD estandar.
 | PUT | `/{id}` | `{ nombreRegion, activo }` |
 | DELETE | `/{id}` | — |
 
+### Regiones `/api/v1/comuna`
+| Metodo | Ruta | Body |
+|--------|------|------|
+| GET | `/` · `/{id}` | — |
+| POST | `/` | `{ nombreRegion, activo }` |
+| PUT | `/{id}` | `{ nombreRegion, activo }` |
+| DELETE | `/{id}` | — |
+
 ## requisitos
 -Java 21+
 -MySQL 8+

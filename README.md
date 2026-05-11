@@ -106,12 +106,12 @@ PUT /{id}: Body { comuna: {idcomuna}, {nombrecomuna}, {activocomuna}, {regionid}
 DELETE /{id}: Sin Body (—)
 
 Marcas /api/v1/marcas
-GET /: Sin Body (—)
-GET /{id}: Sin Body (—)
-POST /: Body { nombreMarca } 
-PUT /{id}: Body { nombreMarca }
-DELETE /{id}: Sin Body (—)
-
+GET /: Sin Body (—)  
+GET /{id}: Sin Body (—)  
+POST /: Body { nombreMarca }   
+PUT /{id}: Body { nombreMarca }  
+DELETE /{id}: Sin Body (—)  
+  
 ## requisitos
 -Java 21+
 -MySQL 8+

@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-
 import com.icomer.icomers.model.region;
 import com.icomer.icomers.service.regionservice;
 
@@ -27,13 +23,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/region")
-@Tag(name = "Regiones", description = "API para la gestión de Regiones del e-commerce") // Etiqueta general
 public class regioncontroller {
 
     @Autowired
     private regionservice regionservice;
 
-    @Operation(summary = "Listar todas las regiones", description = "Obtiene una lista de todas las regiones registradas en el sistema.")
     @GetMapping
     public ResponseEntity<?> listartodos(){
         log.info("CONTROLLER: Peticion para listar todas las regiones");
@@ -44,7 +38,6 @@ public class regioncontroller {
         return new ResponseEntity<>("sin registros", HttpStatus.NO_CONTENT);
     }
 
-    @Operation(summary = "Buscar región por ID", description = "Obtiene una región específica basándose en su ID.")
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarporid(@PathVariable Integer id){
         try {
@@ -54,7 +47,6 @@ public class regioncontroller {
         }
     }
 
-    @Operation(summary = "Crear una nueva región", description = "Guarda una nueva región en la base de datos.")
     @PostMapping
     public ResponseEntity<?> guardarregion(@Valid @RequestBody region objeto){
         try {
@@ -66,7 +58,6 @@ public class regioncontroller {
         }
     }
 
-    @Operation(summary = "Actualizar una región", description = "Actualiza los datos de una región existente basándose en su ID.")
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarregion(@PathVariable Integer id, @Valid @RequestBody region objeto){
         try {
@@ -78,7 +69,6 @@ public class regioncontroller {
         }
     }
 
-    @Operation(summary = "Eliminar una región", description = "Elimina de forma física una región del sistema usando su ID.")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarregion(@PathVariable Integer id){
         try {

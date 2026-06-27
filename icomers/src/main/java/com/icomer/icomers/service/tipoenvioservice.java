@@ -1,0 +1,54 @@
+package com.icomer.icomers.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.icomer.icomers.model.tipoenvio;
+import com.icomer.icomers.repository.tipoenviorepository;
+
+import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+@Transactional
+public class tipoenvioservice {
+
+    @Autowired
+    private tipoenviorepository tipoenviorepository;
+
+    public List<tipoenvio> listartodos(){
+        log.info("SERVICE: Listando todos los tipos de envio");
+        return tipoenviorepository.findAll();
+    }
+
+    public tipoenvio buscarporid(Integer id){
+        log.info("SERVICE: Buscando tipo de envio ID: {}", id);
+        return tipoenviorepository.findById(id).orElseThrow(() -> {
+            log.error("SERVICE: No se encontro el ID de envio: {}", id);
+            return new RuntimeException("no encontrado");
+        });
+    }
+
+    public tipoenvio guardartipoenvio(tipoenvio nuevo){
+        log.info("SERVICE: Guardando nuevo envio: {}", nuevo.getNombre());
+        return tipoenviorepository.save(nuevo);
+    }
+
+    public tipoenvio actualizartipoenvio(Integer id, tipoenvio datosNuevos){
+        log.info("SERVICE: Actualizando envio ID: {}", id);
+        tipoenvio existente = buscarporid(id);
+        existente.setNombre(datosNuevos.getNombre());
+        existente.setCosto(datosNuevos.getCosto());
+        existente.setActivo(datosNuevos.getActivo());
+        return tipoenviorepository.save(existente);
+    }
+
+    public void eliminartipoenvio(Integer id){
+        log.info("SERVICE: Eliminando envio ID: {}", id);
+        tipoenvio existente = buscarporid(id);
+        tipoenviorepository.delete(existente);
+    }
+}

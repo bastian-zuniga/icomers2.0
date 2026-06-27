@@ -1,29 +1,33 @@
 package com.icomer.icomers.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.icomer.icomers.model.comuna;
 import com.icomer.icomers.service.comunaservice;
+
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/comuna")
-@Tag(name = "Comunas", description = "API para la gestión de Comunas del e-commerce") // Etiqueta general
 public class comunacontroller {
 
     @Autowired
     private comunaservice comunaservice;
 
-    @Operation(summary = "Listar todas las comunas", description = "Obtiene una lista de todas las comunas registradas en la base de datos.")
     @GetMapping
     public ResponseEntity<?> listartodos(){
         log.info("CONTROLLER: Peticion para listar todas las comunas");
@@ -34,7 +38,6 @@ public class comunacontroller {
         return new ResponseEntity<>("sin registros", HttpStatus.NO_CONTENT);
     }
 
-    @Operation(summary = "Buscar comuna por ID", description = "Obtiene los detalles de una comuna específica basándose en su ID.")
     @GetMapping("/{id}")
     public ResponseEntity<?> buscarporid(@PathVariable Integer id){
         try {
@@ -44,7 +47,6 @@ public class comunacontroller {
         }
     }
 
-    @Operation(summary = "Crear una nueva comuna", description = "Registra una nueva comuna en el sistema. Requiere enviar el ID de la región a la que pertenece.")
     @PostMapping
     public ResponseEntity<?> guardarcomuna(@Valid @RequestBody comuna objeto){
         try {
@@ -56,7 +58,6 @@ public class comunacontroller {
         }
     }
 
-    @Operation(summary = "Actualizar una comuna", description = "Modifica los datos de una comuna existente usando su ID.")
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizarcomuna(@PathVariable Integer id, @Valid @RequestBody comuna objeto){
         try {
@@ -68,7 +69,6 @@ public class comunacontroller {
         }
     }
 
-    @Operation(summary = "Eliminar una comuna", description = "Elimina permanentemente una comuna de la base de datos usando su ID.")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarcomuna(@PathVariable Integer id){
         try {
